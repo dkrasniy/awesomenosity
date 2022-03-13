@@ -4,8 +4,10 @@ module.exports = {
       title: ``,
     siteUrl: `https://www.yourdomain.tld`
   },
-  plugins: [{
-    resolve: 'gatsby-plugin-google-analytics',
+  plugins: [
+    'gatsby-plugin-postcss',
+    {
+      resolve: 'gatsby-plugin-google-analytics',
     options: {
       "trackingId": "ADDLATER"
     }

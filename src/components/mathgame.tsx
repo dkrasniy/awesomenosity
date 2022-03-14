@@ -29,12 +29,10 @@ export default function MathGame() {
 
         if (selection) {
             currentSelections[screenNumber] = 1
-            console.log(currentSelections)
-        }
+         }
 
         if (screenNumber + 1 == values.length) {
-            console.log('end of game')
-
+            console.log('end of game') 
         }
         setScreenNumber(screenNumber + 1)
 

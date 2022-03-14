@@ -51,7 +51,7 @@ export default function MathGame() {
     const FooterArea = () => (
         <div className='flex items-center justify-between max-w-4xl w-full flex-col mt-16 pb-4'>
             <div className=" text-white text-lg font-display my-4 text-center font-bold py-3 px-6  select-none bg-gray-300">Awesomenosity</div>
-            <span className="text-sm text-gray-500 font-display text-center  block">&copy; 2022 Awesomenosity, Inc<a href="https://twitter.com/dkrasniy" className='block font-bold' target={"_blank"}>a david krasniy company</a></span>
+            <span className="text-sm text-gray-500 font-display text-center  block"><a href="https://twitter.com/dkrasniy" className='font-bold' target={"_blank"}>created by @dkrasniy</a></span>
         </div>
     )
 

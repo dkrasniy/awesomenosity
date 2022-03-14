@@ -67,20 +67,20 @@ export default function MathGame() {
 
 
 
-        </div> : (screenNumber < 6 ? <> <h2 className='p-4 font-bold text-xl md:text-3xl mt-6 text-center'>Does your number appear in this list of numbers?</h2>
+        </div> : (screenNumber < 6 ? <> <h2 className='p-4 font-bold text-2xl md:text-3xl mt-6 text-center text-gray-800'>Does your number appear in this list of numbers?</h2>
 
             <div className='flex items-center mb-6'>
                 <button className='px-16 py-4 font-display bg-purple-500 rounded-full text-white font-bold text-xl mr-3 hover:bg-purple-600 transition-all' onClick={() => handleButtonSelection(true)}>Yes</button>
                 <button className='px-16 py-4  font-display bg-gray-200 rounded-full text-gray-800 font-bold text-xl mr-3 hover:bg-gray-300 transition-all' onClick={() => handleButtonSelection(false)}>No</button>
-            </div><div className='grid grid-cols-8 gap-6 max-w-4xl mx-auto font-display font-semibold text-2xl bg-white p-8'>
-                {values[screenNumber].map((number) => <div className='flex items-center justify-center p-8 text-center'>{number}</div>)}
+            </div><div className='grid grid-cols-8  max-w-4xl mx-auto font-display font-semibold text-xl md:text-2xl bg-white  '>
+                {values[screenNumber].map((number) => <div className='flex items-center justify-center p-6 text-center py-8 md:px-8 border border-gray-50'>{number}</div>)}
             </div> </> :
             <div className='flex justify-center flex-col'>
                 <h2 className='font-bold text-2xl md:text-3xl mt-6 text-center'>Your number must be... <span className='block text-center text-8xl my-6'>{guess}</span></h2>
 
                 <button className='px-16 py-4  font-display bg-gray-200 rounded-full text-gray-800 font-bold text-xl mr-3 hover:bg-gray-300 transition-all' onClick={() => { setGameStarted(false); setGuess(0); setScreenNumber(0); setScreenNumber(0); setNumberPresentOnPage([0, 0, 0, 0, 0, 0]) }}>Play Again</button>
 
-<p className='text-sm text-gray-700 font-display p-6 text-center '>Huge shout out to Professor <b>Jay Cummings</b>!</p>
+<p className='text-sm text-gray-700 font-display p-6 text-center '>Huge shout out to Professor <b>Jay Cummings</b> for the inspiration!</p>
             </div>)}
 
 

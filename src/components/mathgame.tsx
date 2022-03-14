@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { motion } from "framer-motion"
 
 export default function MathGame() {
     const [gameStarted, setGameStarted] = useState(false)
@@ -54,29 +55,50 @@ export default function MathGame() {
             <span className="text-sm text-gray-500 font-display text-center  block"><a href="https://twitter.com/dkrasniy" className='font-bold' target={"_blank"}>created by @dkrasniy</a></span>
         </div>
     )
-
+ 
 
     return <div className='min-h-screen bg-gray-100 flex items-center flex-col justify-center px-4'>
         <div className='bg-purple-500 h-4 fixed block w-full top-0 left-0 transition-all rounded-r-full' style={{ width: screenNumber * 21 + '%' }} />
 
 
-        {!gameStarted ? <div className='flex flex-col justify-center bg-white max-w-4xl p-20'>
+        {!gameStarted ? <div className='flex flex-col justify-center bg-white max-w-4xl bg-white rounded-2xl shadow-xl p-20'>
 
             <h2 className='font-bold text-2xl md:text-3xl mt-6 text-center text-gray-700'>Think of any number between <span className='text-gray-900'>1</span> and <span className='text-gray-900'>50</span>.<br /><br /> Ready?</h2>
             <button className='px-16 py-4 font-display bg-purple-500 rounded-full text-white font-bold text-xl hover:bg-purple-600 transition-all mt-12 mx-auto ' onClick={() => setGameStarted(true)}>Begin</button>
 
 
 
-        </div> : (screenNumber < 6 ? <> <h2 className='p-4 font-bold text-2xl md:text-3xl mt-6 text-center text-gray-800'>Does your number appear in this list of numbers?</h2>
+        </div> : (screenNumber < 6 ? <> 
+<div className=' bg-white rounded-2xl shadow-xl mt-8'>
+    <div className='bg-gray-50 px-12  bg-gray-50 rounded-t-2xl py-8'>
+    <h2 className='font-bold text-3xl md:text-3xl text-center text-gray-800'>Does your number appear in this list of numbers?</h2>
 
-            <div className='flex items-center mb-6'>
+        </div>
+           <div className='grid grid-cols-8  max-w-4xl mx-auto font-display font-semibold text-xl md:text-2xl border-b px-4'>
+                {values[screenNumber].map((number) => <div className='flex items-center justify-center text-center py-8 text-gray-800 '>{number}</div>)}
+            </div>
+            <div className='flex items-center my-6 mx-auto justify-center p-2 group'>
                 <button className='px-16 py-4 font-display bg-purple-500 rounded-full text-white font-bold text-xl mr-3 hover:bg-purple-600 transition-all' onClick={() => handleButtonSelection(true)}>Yes</button>
                 <button className='px-16 py-4  font-display bg-gray-200 rounded-full text-gray-800 font-bold text-xl mr-3 hover:bg-gray-300 transition-all' onClick={() => handleButtonSelection(false)}>No</button>
-            </div><div className='grid grid-cols-8  max-w-4xl mx-auto font-display font-semibold text-xl md:text-2xl bg-white  '>
-                {values[screenNumber].map((number) => <div className='flex items-center justify-center p-6 text-center py-8 md:px-8 border border-gray-50'>{number}</div>)}
-            </div> </> :
+            </div>
+            </div>
+             </> :
             <div className='flex justify-center flex-col'>
-                <h2 className='font-bold text-2xl md:text-3xl mt-6 text-center'>Your number must be... <span className='block text-center text-8xl my-6'>{guess}</span></h2>
+                
+                <h2 className='font-bold text-2xl md:text-3xl mt-6 text-center'>Your number must be... 
+                
+                <motion.div  
+             
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0,   transition: {  type: "spring", bounce: 0.4, duration: .35 },}}
+              
+            viewport={{ once: true }}>
+<span className='block text-center text-8xl my-6'>{guess}</span>
+                </motion.div>
+ 
+  
+ </h2>
+ 
 
                 <button className='px-16 py-4  font-display bg-gray-200 rounded-full text-gray-800 font-bold text-xl mr-3 hover:bg-gray-300 transition-all' onClick={() => { setGameStarted(false); setGuess(0); setScreenNumber(0); setScreenNumber(0); setNumberPresentOnPage([0, 0, 0, 0, 0, 0]) }}>Play Again</button>
 

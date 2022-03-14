@@ -16,6 +16,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "framer-motion": "^6.2.8",
     "gatsby": "^4.9.2",
     "gatsby-plugin-google-analytics": "^4.9.0",
     "gatsby-plugin-image": "^2.9.1",

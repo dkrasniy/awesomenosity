@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { motion } from "framer-motion"
+import { motion } from "framer-motion" 
 
 export default function MathGame() {
     const [gameStarted, setGameStarted] = useState(false)
@@ -7,6 +7,7 @@ export default function MathGame() {
     const [screenNumber, setScreenNumber] = useState(0)
     const [numberPresentOnPage, setNumberPresentOnPage] = useState([0, 0, 0, 0, 0, 0])
     const [guess, setGuess] = useState(0)
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
 
@@ -30,10 +31,15 @@ export default function MathGame() {
 
         if (selection) {
             currentSelections[screenNumber] = 1
-         }
+        }
 
         if (screenNumber + 1 == values.length) {
-            console.log('end of game') 
+            console.log('end of game')
+             
+           
+            setTimeout(() => {
+                setLoading(false)
+              }, 500);
         }
         setScreenNumber(screenNumber + 1)
 
@@ -55,7 +61,7 @@ export default function MathGame() {
             <span className="text-sm text-gray-500 font-display text-center  block"><a href="https://twitter.com/dkrasniy" className='font-bold' target={"_blank"}>created by @dkrasniy</a></span>
         </div>
     )
- 
+
 
     return <div className='min-h-screen bg-gray-100 flex items-center flex-col justify-center px-4'>
         <div className='bg-purple-500 h-4 fixed block w-full top-0 left-0 transition-all rounded-r-full' style={{ width: screenNumber * 21 + '%' }} />
@@ -63,46 +69,56 @@ export default function MathGame() {
 
         {!gameStarted ? <div className='flex flex-col justify-center bg-white max-w-4xl bg-white rounded-2xl shadow-xl p-20'>
 
-            <h2 className='font-bold text-2xl md:text-3xl mt-6 text-center text-gray-700'>Think of any number between <span className='text-gray-900'>1</span> and <span className='text-gray-900'>50</span>.<br /><br /> Ready?</h2>
+            <h2 className='font-bold text-2xl md:text-3xl mt-6 text-center text-gray-700'>Think of a number between <span className='text-gray-900'>1</span> and <span className='text-gray-900'>50</span>.<br /><br /> Ready?</h2>
             <button className='px-16 py-4 font-display bg-purple-500 rounded-full text-white font-bold text-xl hover:bg-purple-600 transition-all mt-12 mx-auto ' onClick={() => setGameStarted(true)}>Begin</button>
 
 
 
-        </div> : (screenNumber < 6 ? <> 
-<div className=' bg-white rounded-2xl shadow-xl  max-w-2xl mt-8'>
-    <div className='bg-gray-50 px-12  bg-gray-50 rounded-t-2xl py-8'>
-    <h2 className='font-bold text-3xl md:text-3xl text-center text-gray-800'>Does your number appear in this list of numbers?</h2>
+        </div> : (screenNumber < 6 ? <>
+            <div className=' bg-white rounded-2xl shadow-xl  max-w-2xl mt-8'>
+                <div className='bg-gray-50 px-12  bg-gray-50 rounded-t-2xl py-8'>
+                    <h2 className='font-bold text-3xl md:text-3xl text-center text-gray-800'>Does your number appear in this list of numbers?</h2>
 
-        </div>
-           <div className='grid grid-cols-8  mx-auto font-display font-semibold text-xl md:text-2xl border-b px-4'>
-                {values[screenNumber].map((number) => <div className='flex items-center justify-center text-center py-8 text-gray-800 '>{number}</div>)}
+                </div>
+                <div className='grid grid-cols-8  mx-auto font-display font-semibold text-xl md:text-2xl border-b px-4'>
+                    {values[screenNumber].map((number) => <div className='flex items-center justify-center text-center py-8 text-gray-800 '>{number}</div>)}
+                </div>
+                <div className='flex items-center my-6 mx-auto justify-center p-2 group'>
+                    <button className='px-16 py-4 font-display bg-purple-500 rounded-full text-white font-bold text-xl mr-3 hover:bg-purple-600 transition-all' onClick={() => handleButtonSelection(true)}>Yes</button>
+                    <button className='px-16 py-4  font-display bg-gray-200 rounded-full text-gray-800 font-bold text-xl mr-3 hover:bg-gray-300 transition-all' onClick={() => handleButtonSelection(false)}>No</button>
+                </div>
             </div>
-            <div className='flex items-center my-6 mx-auto justify-center p-2 group'>
-                <button className='px-16 py-4 font-display bg-purple-500 rounded-full text-white font-bold text-xl mr-3 hover:bg-purple-600 transition-all' onClick={() => handleButtonSelection(true)}>Yes</button>
-                <button className='px-16 py-4  font-display bg-gray-200 rounded-full text-gray-800 font-bold text-xl mr-3 hover:bg-gray-300 transition-all' onClick={() => handleButtonSelection(false)}>No</button>
-            </div>
-            </div>
-             </> :
+        </> :
             <div className='flex justify-center flex-col'>
-                
-                <h2 className='font-bold text-2xl md:text-3xl mt-6 text-center'>Your number must be... 
-                
-                <motion.div  
-             
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0,   transition: {  type: "spring", bounce: 0.4, duration: .35 },}}
-              
-            viewport={{ once: true }}>
-<span className='block text-center text-8xl my-6'>{guess}</span>
-                </motion.div>
- 
-  
- </h2>
- 
 
-                <button className='px-16 py-4  font-display bg-gray-200 rounded-full text-gray-800 font-bold text-xl mr-3 hover:bg-gray-300 transition-all' onClick={() => { setGameStarted(false); setGuess(0); setScreenNumber(0); setScreenNumber(0); setNumberPresentOnPage([0, 0, 0, 0, 0, 0]) }}>Play Again</button>
+                <h2 className='font-bold text-2xl md:text-3xl mt-6 text-center'>Your number must be...
 
-<p className='text-sm text-gray-700 font-display p-6 text-center '>Huge shout out to Professor <b>Jay Cummings</b> for the inspiration!</p>
+                  
+                        {loading ?  <svg
+      className={`animate-spin text-button h-12 w-12 mx-auto my-12`}
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <path
+        fill="currentColor"
+        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+      />
+    </svg> :  <motion.div
+
+initial={{ opacity: 0, y: 10 }}
+whileInView={{ opacity: 1, y: 0, transition: { type: "spring", bounce: 0.5, duration: .45 }, }}
+
+viewport={{ once: true }}>
+<span className='block text-center text-8xl my-6'>{guess}</span>  </motion.div>  }
+                  
+
+
+                </h2>
+ 
+                <button className='px-16 py-4  font-display bg-gray-200 rounded-full text-gray-800 font-bold text-xl mr-3 hover:bg-gray-300 transition-all' onClick={() => { setGameStarted(false); setGuess(0); setScreenNumber(0); setScreenNumber(0); setNumberPresentOnPage([0, 0, 0, 0, 0, 0]); setLoading(true) }}>Play Again</button>
+
+                <p className='text-sm text-gray-700 font-display p-6 text-center '>Huge shout out to Professor <b>Jay Cummings</b> for the inspiration!</p>
             </div>)}
 
 

@@ -67,9 +67,9 @@ export default function MathGame() {
 
 
 
-        </div> : (screenNumber < 6 ? <> <h2 className='font-bold text-2xl md:text-3xl mt-6 text-center'>Does your number appear in this list of numbers?</h2>
+        </div> : (screenNumber < 6 ? <> <h2 className='p-4 font-bold text-xl md:text-3xl mt-6 text-center'>Does your number appear in this list of numbers?</h2>
 
-            <div className='flex items-center my-6'>
+            <div className='flex items-center mb-6'>
                 <button className='px-16 py-4 font-display bg-purple-500 rounded-full text-white font-bold text-xl mr-3 hover:bg-purple-600 transition-all' onClick={() => handleButtonSelection(true)}>Yes</button>
                 <button className='px-16 py-4  font-display bg-gray-200 rounded-full text-gray-800 font-bold text-xl mr-3 hover:bg-gray-300 transition-all' onClick={() => handleButtonSelection(false)}>No</button>
             </div><div className='grid grid-cols-8 gap-6 max-w-4xl mx-auto font-display font-semibold text-2xl bg-white p-8'>
@@ -80,7 +80,7 @@ export default function MathGame() {
 
                 <button className='px-16 py-4  font-display bg-gray-200 rounded-full text-gray-800 font-bold text-xl mr-3 hover:bg-gray-300 transition-all' onClick={() => { setGameStarted(false); setGuess(0); setScreenNumber(0); setScreenNumber(0); setNumberPresentOnPage([0, 0, 0, 0, 0, 0]) }}>Play Again</button>
 
-<p className='text-sm text-gray-700 font-display p-6 text-center '>Huge shout out to Professor <b>Jay Cummings</b> for generously sharing his magic!</p>
+<p className='text-sm text-gray-700 font-display p-6 text-center '>Huge shout out to Professor <b>Jay Cummings</b>!</p>
             </div>)}
 
 

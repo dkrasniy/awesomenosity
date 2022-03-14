@@ -77,7 +77,7 @@ export default function MathGame() {
         </div> : (screenNumber < 6 ? <>
             <div className=' bg-white rounded-2xl shadow-xl  max-w-2xl mt-8'>
                 <div className='bg-gray-50 px-12  bg-gray-50 rounded-t-2xl py-8'>
-                    <h2 className='font-bold text-3xl md:text-3xl text-center text-gray-800'>Does your number appear in this list of numbers?</h2>
+                    <h2 className='font-bold text-2xl md:text-3xl text-center text-gray-800'>Does your number appear in this list of numbers?</h2>
 
                 </div>
                 <div className='grid grid-cols-8  mx-auto font-display font-semibold text-xl md:text-2xl border-b px-4'>

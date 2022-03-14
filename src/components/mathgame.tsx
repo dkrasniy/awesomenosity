@@ -62,7 +62,7 @@ export default function MathGame() {
 
         {!gameStarted ? <div className='flex flex-col justify-center bg-white max-w-4xl p-20'>
 
-            <h2 className='font-bold text-2xl md:text-3xl mt-6 text-center'>Think of any number betweem 1 and 50.<br /><br /> Ready?</h2>
+            <h2 className='font-bold text-2xl md:text-3xl mt-6 text-center text-gray-700'>Think of any number between <span className='text-gray-900'>1</span> and <span className='text-gray-900'>50</span>.<br /><br /> Ready?</h2>
             <button className='px-16 py-4 font-display bg-purple-500 rounded-full text-white font-bold text-xl hover:bg-purple-600 transition-all mt-12 mx-auto ' onClick={() => setGameStarted(true)}>Begin</button>
 
 

@@ -69,12 +69,12 @@ export default function MathGame() {
 
 
         </div> : (screenNumber < 6 ? <> 
-<div className=' bg-white rounded-2xl shadow-xl mt-8'>
+<div className=' bg-white rounded-2xl shadow-xl  max-w-2xl mt-8'>
     <div className='bg-gray-50 px-12  bg-gray-50 rounded-t-2xl py-8'>
     <h2 className='font-bold text-3xl md:text-3xl text-center text-gray-800'>Does your number appear in this list of numbers?</h2>
 
         </div>
-           <div className='grid grid-cols-8  max-w-4xl mx-auto font-display font-semibold text-xl md:text-2xl border-b px-4'>
+           <div className='grid grid-cols-8  mx-auto font-display font-semibold text-xl md:text-2xl border-b px-4'>
                 {values[screenNumber].map((number) => <div className='flex items-center justify-center text-center py-8 text-gray-800 '>{number}</div>)}
             </div>
             <div className='flex items-center my-6 mx-auto justify-center p-2 group'>

@@ -80,8 +80,8 @@ export default function MathGame() {
                     <h2 className='font-bold text-2xl md:text-3xl text-center text-gray-800'>Does your number appear in this list of numbers?</h2>
 
                 </div>
-                <div className='grid grid-cols-8  mx-auto font-display font-semibold text-xl md:text-2xl border-b px-4'>
-                    {values[screenNumber].map((number) => <div className='flex items-center justify-center text-center py-8 text-gray-800 '>{number}</div>)}
+                <div className='grid grid-cols-8  mx-auto font-display font-semibold text-xl md:text-2xl border-b px-4 font-display'>
+                    {values[screenNumber].map((number) => <div className='flex items-center justify-center text-center py-8 text-gray-800 font-display '>{number}</div>)}
                 </div>
                 <div className='flex items-center my-6 mx-auto justify-center p-2 group'>
                     <button className='px-16 py-4 font-display bg-purple-500 rounded-full text-white font-bold text-xl mr-3 hover:bg-purple-600 transition-all' onClick={() => handleButtonSelection(true)}>Yes</button>
